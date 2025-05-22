@@ -22,15 +22,17 @@ Source: https://docs.sonarqube.org/latest/requirements/requirements/
 1. extract packages
    ```sh 
    unzip /opt/sonarqube-x.x.zip
-   ```
-
-2. Change ownershipt to the user and Switch to Linux binaries directory to start service
+```
+2.Create the sonaradmin user (if it doesn't already exist) because sonarqube wont work as a root user we need to create a user
+   sudo useradd -m -s /bin/bash sonaradmin
+```
+3. Change ownershipt to the user and Switch to Linux binaries directory to start service
    ```bash
    chown -R <sonar_user>:<sonar_user_group> /opt/sonarqube-x.x  
    cd /opt/sonarqube-x.x/bin/linux-x86-64   
    ./sonar.sh start
    ```
-3. Connect to the SonarQube server through the browser. It uses port 9000.   
+4. Connect to the SonarQube server through the browser. It uses port 9000.   
    `Note`: Port should be opened in the Security group 
    ```bash
    http://<Public-IP>:9000
